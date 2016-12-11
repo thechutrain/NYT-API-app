@@ -40,30 +40,70 @@ $("#buttonSearch").on("click", function(){
     // 2) loop through the array of articles & get key data
     articlesArray.forEach(function(article){
       // initialize variables
-      var title, snippetText, date, url;
+      var title, snippetText, date, articleURL, multimediaArray, thumbnailURL;
       // set variables
       title = article.headline.main;
       // snippetText = article.lead_paragraph;
       snippetText = article.snippet;
       date = article.pub_date;
-      url = article.web_url;
+      articleURL = article.web_url;
+      multimediaArray = article.multimedia;
+      thumbnailURL = undefined; // assume its not there first
 
       // TESTING
-      // console.log(title + "\n " + snippetText + "\n " + date + "\n " + url);
+      // console.log(title + "\n " + snippetText + "\n " + date + "\n " + articleURL);
       // debugger
       // console.log(typeof date);
-      console.log(article);
-      debugger
+      // console.log(article);
+      // debugger
 
 
     // 3) Create all the data into DOM values
-    var articleWrapper = $("<div>").addClass("article-wrapper");
-    articleWrapper.append( $("<h4>").text(title) )
+    // var articleWrapper = $("<div>").addClass("article-wrapper");
+    // articleWrapper.append( $("<h4>").text(title) )
+    //               .append( $("<p>").text(snippetText) )
+    //               .append( $("<p>").text(date) )
+    //               .append( $("<a>").attr("href", url)
+    //                                .attr("target", "_blank")
+    //                                .html("<p>Read More</p>") );
+    // 3a) create the wrapper for the article
+    var articleWrapper = $("<div>").addClass("media");
+    // 3b) check to see if article has a thumbnail image to addClass
+    // and make the DOM if it exists
+    if (multimediaArray.length !== 0){
+      // assume now there is content here
+      // loop through the array
+      multimediaArray.forEach(function(media){
+        if (media.subtype === "thumbnail"){
+          // console.log(this); // window!!
+          // console.log(media);
+          // debugger;
+          thumbnailURL = media.url;
+        }
+      }) // exits forEach loop
+    }
+    // 3b) cont. check to see if there is a thumbnailURL
+    if (thumbnailURL){
+      var mediaObject = $("<div>").addClass("media-left")
+                                  .append( $("<img>")
+                                    .addClass("media-object")
+                                    .attr("src", NYT_URL + thumbnailURL)
+                                  );
+                                  // .append( $("<a>").attr("href", articleURL) )
+      articleWrapper.append(mediaObject);
+    }
+
+
+
+    // 3c) Get the main contents of the article
+    var mediaBody = $("<div>").addClass("media-body")
+                  .append( $("<h4>").addClass("media-heading").text(title) )
                   .append( $("<p>").text(snippetText) )
                   .append( $("<p>").text(date) )
-                  .append( $("<a>").attr("href", url)
+                  .append( $("<a>").attr("href", articleURL)
                                    .attr("target", "_blank")
                                    .html("<p>Read More</p>") );
+    articleWrapper.append(mediaBody);
 
     // 4) append to the resultsContainer
     resultsContainer.append(articleWrapper);
