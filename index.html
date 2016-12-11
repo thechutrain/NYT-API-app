@@ -13,14 +13,79 @@
   <title>Boilerplate for Heroku Deployment</title>
 </head>
 <body>
-<h2> Includes JQuery and Bootstrap 3 cdn</h2>
+  <!-- >>>>>>>>>>> Header Section <<<<<<<<< -->
+  <div class="container headerSection">
+    <h2>New York Times Search</h2>
+  </div>
+
+  <!-- >>>>>>>>>>> Search Section <<<<<<<<< -->
+  <div class="container searchSection">
+    <div class="row">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Search Parameters</h3>
+        </div>
+        <div class="panel-body">
+
+          <!-- <form> -->
+            <!-- >>> Search Term <<<< -->
+            <div class="form-group">
+              <label for="searchTerm">Search Term:</label>
+              <input type="text" class="form-control" id="searchTerm" placeholder="Search Term">
+            </div>
+            <!-- >>> Number of Records <<<< -->
+            <div class="form-group">
+              <label for="numberRecords">Number of Records:</label>
+              <select class="form-control" id="numberRecords">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+              </select>
+            </div>
+            <!-- >>> Start Year <<<< -->
+            <div class="form-group">
+              <label for="startYear">Start Year (optional):</label>
+              <input type="text" class="form-control" id="startYear" placeholder="YYYY">
+            </div>
+            <!-- >>> End Year <<<< -->
+            <div class="form-group">
+              <label for="endYear">End Year (optional):</label>
+              <input type="text" class="form-control" id="endYear" placeholder="YYYY">
+            </div>
+            <!-- >>> Search Button <<<< -->
+            <button type="submit" class="btn btn-default" id="buttonSearch">Submit</button>
+            <!-- >>> Clear Button <<<< -->
+            <button type="submit" class="btn btn-default" id="buttonClear">Clear Search</button>
+          <!-- </form> -->
 
 
+        </div> <!-- closes panel-body -->
+      </div>
 
-<button id="buttonSearch">test</button>
+    </div> <!-- closes searchSection row-->
+  </div>
+
+
+  <!-- >>>>>>>>>>> Results Section <<<<<<<<< -->
+  <div class="container resultsSection">
+    <div class="row">
+        <div id="resultsTarget"></div>
+    </div> <!-- closes searchSection row-->
+  </div>
+
+
+  <!-- >>>>>>>>>>> Footer Section <<<<<<<<< -->
+  <div class="footer container-fluid">
+    <p>&copy; Alan Chu</p>
+  </div>
+
 
 <!-- Including scripts here -->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="assets/javascript/private.js"></script>
 <script src="assets/javascript/main.js"></script>
 </body>

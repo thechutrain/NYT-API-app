@@ -1,16 +1,11 @@
-//
-// $(document).ready(function(){
-//   var test = $("<div class='test'>");
-//     test.append( $("<p>hi</p>"));
-//     test.prepend( $("<h4>before</h4>") );
-//   $("h2").append(test);
-// });
-
 // PART 1 ---- create Event listener for click button
 
 $("#buttonSearch").on("click", function(){
-  // 0) initialize variables for search
+  //0.0) Clear previous search result
+  $("#resultsTarget").empty();
+  // 0.25) initialize variables for search
   var searchTerm, numberRecords, startYear, endYear;
+  const NYT_URL = "http://www.nytimes.com/"; // used to build images
   // CREATE API KEY;
   var API_key = NYT_API.key; // >> api-key
   var API_value = NYT_API.value; // >> try to guess what this will be :)
@@ -23,18 +18,15 @@ $("#buttonSearch").on("click", function(){
   // TO DO
 
   // 1) get content from the form
-  searchTerm = $("#searchTerm").text();
-  searchTerm = "Breast Cancer"; // TESTING
-  numberRecords = $("#numberRecords").text();
-  startYear = $("#startYear").text();
-  endYear = $("#endYear").text();
-
+  searchTerm = $("#searchTerm").val();
+  numberRecords = $("#numberRecords :selected").text().trim();
+  startYear = $("#startYear").val();
+  endYear = $("#endYear").val();
 
   // 2) build search query
   var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
   queryURL += "q=" + searchTerm;
   queryURL += "&" + API_key_value;
-
 
   // 3) Make Ajax call
   $.ajax({
@@ -60,7 +52,9 @@ $("#buttonSearch").on("click", function(){
       // console.log(title + "\n " + snippetText + "\n " + date + "\n " + url);
       // debugger
       // console.log(typeof date);
-      // debugger
+      console.log(article);
+      debugger
+
 
     // 3) Create all the data into DOM values
     var articleWrapper = $("<div>").addClass("article-wrapper");
@@ -77,14 +71,38 @@ $("#buttonSearch").on("click", function(){
     }); // closes forEach
 
     //5) update the DOM with the results Container;
-    $("body").append(resultsContainer);
+    $("#resultsTarget").append(resultsContainer);
 
   }) //closes .done() promise
-
+  .fail(function(error){
+    // console.log(error);
+    $("#resultsTarget").append( $("<h4>").text("Sorry, could not load data.") );
+  })
 
 });
 
+
 // PART 2 --- create Event listener for clear button
 $("#buttonClear").on("click", function(){
+  // test to see if I can get the
+  // console.log( $("#numberRecords") );
+  // $("#numberRecords")
+
+  // var test = document.querySelector("#numberRecords");
+  // // var test = $("#numberRecords");
+  // console.log(test.selectedIndex); // returns the index the user selected
+  // var index = test.selectedIndex;
+  // var foo = test[index].innerHTML;
+  // // var foo = test[index].html();
+  // var foo = parseInt(foo);
+  // console.log(typeof foo);
+
+  // jQUERY !!!
+  // var selected = $("#numberRecords :selected").text().trim();
+  // var selected = $("#numberRecords").children("option").filter(":selected").text();
+  // console.log( typeof parseInt(selected) );
+  // console.log( typeof selected );
+  // console.log( selected );
+
 
 });
