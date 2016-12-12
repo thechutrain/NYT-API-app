@@ -9,64 +9,39 @@
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
   >
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <title>Boilerplate for Heroku Deployment</title>
+  <title>New York Times Search</title>
 </head>
+
 <body>
-  <!-- >>>>>>>>>>> Header Section <<<<<<<<< -->
-  <div class="container headerSection">
-    <h2>New York Times Search</h2>
-  </div>
-
-  <!-- >>>>>>>>>>> Search Section <<<<<<<<< -->
-  <div class="container searchSection">
-    <div class="row">
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Search Parameters</h3>
-        </div>
-        <div class="panel-body">
-
-          <!-- <form> -->
-            <!-- >>> Search Term <<<< -->
-            <div class="form-group">
-              <label for="searchTerm">Search Term:</label>
-              <input type="text" class="form-control" id="searchTerm" placeholder="Search Term">
-            </div>
-            <!-- >>> Number of Records <<<< -->
-            <div class="form-group">
-              <label for="numberRecords">Number of Records:</label>
-              <select class="form-control" id="numberRecords">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-              </select>
-            </div>
-            <!-- >>> Start Year <<<< -->
-            <div class="form-group">
-              <label for="startYear">Start Year (optional):</label>
-              <input type="text" class="form-control" id="startYear" placeholder="YYYY">
-            </div>
-            <!-- >>> End Year <<<< -->
-            <div class="form-group">
-              <label for="endYear">End Year (optional):</label>
-              <input type="text" class="form-control" id="endYear" placeholder="YYYY">
-            </div>
-            <!-- >>> Search Button <<<< -->
-            <button type="submit" class="btn btn-default" id="buttonSearch">Submit</button>
-            <!-- >>> Clear Button <<<< -->
-            <button type="submit" class="btn btn-default" id="buttonClear">Clear Search</button>
-          <!-- </form> -->
-
-
-        </div> <!-- closes panel-body -->
+  <div class="container">
+      <div class="jumbotron">
+        <h1> <span class="glyphicon glyphicon-search"></span> New York Times Search</h1>
       </div>
-
-    </div> <!-- closes searchSection row-->
   </div>
+
+  <div class="container" id="formOne">
+    <div><h4><span class="glyphicon glyphicon-search"></span> Search Parameters</h4></div>
+    <form>
+      <div class="form-group">
+        <label for="SearchTerm">Search Term:</label>
+        <input type="text" class="form-control" id="SearchTerm" placeholder="Put Desired Term Here">
+      </div>
+      <div class="form-group">
+        <label for="numberRecords">Number of records to retirve:</label>
+        <input type="text" class="form-control" id="numberRecords" placeholder="Put number of desired records here">
+      </div>
+       <div class="form-group">
+        <label for="startYear">Start Year(Optional):</label>
+        <input type="text" class="form-control" id="startYear" placeholder="(Optional)Put Start Year Here">
+      </div>
+       <div class="form-group">
+        <label for="endYear">End Year(Optional)</label>
+        <input type="text" class="form-control" id="endYear" placeholder="(Optional)Put Start Year Here"">
+      </div>
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+      <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Clear Results</button>
+    </form>
+   </div>
 
 
   <!-- >>>>>>>>>>> Results Section <<<<<<<<< -->
@@ -79,7 +54,6 @@
 
   <!-- >>>>>>>>>>> Footer Section <<<<<<<<< -->
   <div class="footer container-fluid">
-    <p>&copy; Alan Chu</p>
   </div>
 
 
