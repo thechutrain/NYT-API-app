@@ -67,7 +67,7 @@ $("#buttonSearch").on("click", function(){
     //                                .attr("target", "_blank")
     //                                .html("<p>Read More</p>") );
     // 3a) create the wrapper for the article
-    var articleWrapper = $("<div>").addClass("media");
+    var articleWrapper = $("<div>").addClass("media col-sm-12");
     // 3b) check to see if article has a thumbnail image to addClass
     // and make the DOM if it exists
     if (multimediaArray.length !== 0){

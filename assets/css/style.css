@@ -1,12 +1,13 @@
 /* Debugging Purposes */
-div {
+/*div {
   border: 1px dashed pink;
 }
 
 div[class^='container']{
   border: 2px brown solid;
-}
+}*/
 
+/* Styles */
 .container {
 	padding: 0;
 }
